@@ -1,3 +1,6 @@
+### Published Backend Project
+https://v2-minds-backend-srinivas-project.vercel.app
+
 # V2Minds Backend Project
 
 ### **Development Environment**:
