@@ -36,7 +36,7 @@ initializeDBAndServer();
 // and return the saved note.
 app.post("/notes", async (request, response) => {
     try {
-        const {content} = request.body;
+        const { content } = request.body;
         const createNoteQuery = `INSERT INTO notes(content) VALUES(?);`;
         await db.run(createNoteQuery, [content]);
         response.status(200).send("Note added successfully!");
@@ -61,13 +61,22 @@ app.get("/notes", async (request, response) => {
 // DELETE /notes/:id: To delete a specific note by ID.
 app.delete("/notes/:id", async (request, response) => {
     try {
-        const {id} = request.params;
+        const { id } = request.params;
         const deleteNoteQuery = `DELETE FROM notes WHERE id = ?;`;
         await db.run(deleteNoteQuery, [id]);
         response.status(200).send("Note deleted successfully!");
     } catch (e) {
         console.log(`DB Error: ${e.message}`);
         response.status(500).send("An error occured while deleting the note");
+    }
+});
+
+app.get("/", (request, response) => {
+    try {
+        response.send("Welcome! This is a V2Minds Company Assignment backend domain.Please access any path to get the data.");
+    } catch (e) {
+        console.log(e.message);
+        response.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
