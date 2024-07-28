@@ -34,7 +34,7 @@ initializeDBAndServer();
 
 // POST /notes: For creating new notes. It should accept note content, save it to the database in the notes table, 
 // and return the saved note.
-app.post("/notes", async (request, response) => {
+app.post("/addNotes", async (request, response) => {
     try {
         const { content } = request.body;
         const createNoteQuery = `INSERT INTO notes(content) VALUES(?);`;
