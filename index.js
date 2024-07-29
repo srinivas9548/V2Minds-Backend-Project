@@ -7,7 +7,7 @@ const sqlite3 = require("sqlite3");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 const dbPath = path.join(__dirname, "database.db");
@@ -35,7 +35,9 @@ initializeDBAndServer();
 // POST /notes: For creating new notes. It should accept note content, save it to the database in the notes table, 
 // and return the saved note.
 app.post("/addNotes", async (request, response) => {
+
     try {
+        // console.log(request.body);
         const { content } = request.body;
         const createNoteQuery = `INSERT INTO notes(content) VALUES(?);`;
         await db.run(createNoteQuery, [content]);
