@@ -11,6 +11,6 @@ GET http://localhost:3000/notes
 
 ###
 
-DELETE http://localhost:3000/notes/15
+DELETE http://localhost:3000/notes/34
 
 ###
